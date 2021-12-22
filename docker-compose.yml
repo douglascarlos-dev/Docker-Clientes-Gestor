@@ -9,3 +9,18 @@ services:
       - '80:80'
     volumes:
       - ./html:/var/www/html
+
+  db:
+    image: postgres:12
+    container_name: db
+    restart: always
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: clientesgestor
+    ports:
+      - "54320:5432"
+volumes:
+  db_data:
